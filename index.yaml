@@ -1,0 +1,112 @@
+apiVersion: v1
+entries:
+  ingress-unique-host:
+  - annotations:
+      catalog.cattle.io/hidden: "true"
+      catalog.cattle.io/type: kubewarden-policy
+      catalog.cattle.io/ui-component: kubewarden
+      kubewarden/contextAwareResources: |
+        - apiVersion: networking.k8s.io/v1
+          kind: Ingress
+      kubewarden/displayName: Unique Ingress host
+      kubewarden/mutation: "false"
+      kubewarden/registry: ghcr.io
+      kubewarden/repository: kubewarden/policies/unique-ingress-policy
+      kubewarden/resources: Ingress
+      kubewarden/rules: |
+        - apiGroups:
+          - networking.k8s.io
+          apiVersions:
+          - v1
+          resources:
+          - ingresses
+          operations:
+          - CREATE
+          - UPDATE
+      kubewarden/tag: v0.1.5
+    apiVersion: v1
+    appVersion: 0.1.5
+    created: "2025-03-14T13:45:42.16749819Z"
+    description: Requires all Ingress rule hosts to be unique
+    digest: 62fcd087ca94b97c3eaaab9791fcd4c7d45901e16b4cb93211f6bb4bbde25721
+    home: https://github.com/kubewarden/unique-ingress-policy
+    keywords:
+    - ingress
+    - kubewarden
+    name: ingress-unique-host
+    sources:
+    - ghcr.io/kubewarden/policies/unique-ingress-policy:v0.1.5
+    urls:
+    - https://github.com/kubewarden/policy-catalog/releases/download/ingress-unique-host-0.1.5/ingress-unique-host-0.1.5.tgz
+    version: 0.1.5
+  verify-image-signatures:
+  - annotations:
+      catalog.cattle.io/hidden: "true"
+      catalog.cattle.io/type: kubewarden-policy
+      catalog.cattle.io/ui-component: kubewarden
+      kubewarden/displayName: Verify Image Signatures
+      kubewarden/mutation: "true"
+      kubewarden/registry: ghcr.io
+      kubewarden/repository: kubewarden/policies/verify-image-signatures
+      kubewarden/resources: Pod
+      kubewarden/rules: |
+        - apiGroups:
+          - ''
+          apiVersions:
+          - v1
+          resources:
+          - pods
+          operations:
+          - CREATE
+          - UPDATE
+        - apiGroups:
+          - ''
+          apiVersions:
+          - v1
+          resources:
+          - replicationcontrollers
+          operations:
+          - CREATE
+          - UPDATE
+        - apiGroups:
+          - apps
+          apiVersions:
+          - v1
+          resources:
+          - deployments
+          - replicasets
+          - statefulsets
+          - daemonsets
+          operations:
+          - CREATE
+          - UPDATE
+        - apiGroups:
+          - batch
+          apiVersions:
+          - v1
+          resources:
+          - jobs
+          - cronjobs
+          operations:
+          - CREATE
+          - UPDATE
+      kubewarden/tag: v0.3.0
+    apiVersion: v1
+    appVersion: 0.3.0
+    created: "2025-03-14T13:45:42.285081701Z"
+    description: A Kubewarden Policy that verifies all the signatures of the container
+      images referenced by a Pod
+    digest: 063b7a7b2dcbe1d4cbf5e62100d669426949dba2980389b78d9ea86cd00cda06
+    home: https://github.com/kubewarden/verify-image-signatures
+    keywords:
+    - pod
+    - signature
+    - sigstore
+    - trusted
+    name: verify-image-signatures
+    sources:
+    - ghcr.io/kubewarden/policies/verify-image-signatures:v0.3.0
+    urls:
+    - https://github.com/kubewarden/policy-catalog/releases/download/verify-image-signatures-0.3.0/verify-image-signatures-0.3.0.tgz
+    version: 0.3.0
+generated: "2025-03-14T13:45:42.285344179Z"
