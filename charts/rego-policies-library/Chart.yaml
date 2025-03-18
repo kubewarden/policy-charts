@@ -1,0 +1,31 @@
+annotations:
+  artifacthub.io/repository: kubewarden-rego-policies-library
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Kustomization Target Namespace
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/kustomization-target-namespace
+  kubewarden/resources: Kustomization
+  kubewarden/rules: |
+    - apiGroups:
+      - kustomize.toolkit.fluxcd.io
+      apiVersions:
+      - v1
+      resources:
+      - kustomizations
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v1.0.0
+appVersion: 1.0.0
+description: Kustomization targetNamespace must be one of the allowed targetNamespace
+  list.
+home: https://github.com/kubewarden/rego-policies-library
+keywords:
+- flux
+name: kustomization-target-namespace
+sources:
+- ghcr.io/kubewarden/policies/kustomization-target-namespace:v1.0.0
+version: 1.0.0
