@@ -1,0 +1,31 @@
+annotations:
+  artifacthub.io/repository: pvc-storageclass-validator
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: PVC StorageClass Validator
+  kubewarden/mutation: "true"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/persistentvolumeclaim-storageclass-policy
+  kubewarden/resources: PersistentVolumeClaim
+  kubewarden/rules: |
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - persistentvolumeclaims
+      operations:
+      - CREATE
+  kubewarden/tag: v0.1.1
+appVersion: 0.1.1
+description: Policy that validates and adjusts the usage of StorageClasses in PersistentVolumeClaims
+home: https://github.com/kubewarden/persistentvolumeclaim-storageclass-policy
+keywords:
+- persistentvolumeclaim
+- pvc
+- kubewarden
+name: persistentvolumeclaim-storageclass-policy
+sources:
+- ghcr.io/kubewarden/policies/persistentvolumeclaim-storageclass-policy:v0.1.1
+version: 0.1.1
