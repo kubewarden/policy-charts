@@ -1,0 +1,62 @@
+annotations:
+  artifacthub.io/repository: capabilities-psp
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Capabilities PSP
+  kubewarden/mutation: "true"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/capabilities-psp
+  kubewarden/resources: Pod,Deployment,ReplicaSet,StatefulSet,DaemonSet,Job,CronJob,ReplicationController
+  kubewarden/rules: |
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - pods
+      operations:
+      - CREATE
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - replicationcontrollers
+      operations:
+      - CREATE
+      - UPDATE
+    - apiGroups:
+      - apps
+      apiVersions:
+      - v1
+      resources:
+      - deployments
+      - replicasets
+      - statefulsets
+      - daemonsets
+      operations:
+      - CREATE
+    - apiGroups:
+      - batch
+      apiVersions:
+      - v1
+      resources:
+      - jobs
+      - cronjobs
+      operations:
+      - CREATE
+  kubewarden/tag: v0.1.16
+appVersion: 0.1.16
+description: Replacement for the Kubernetes Pod Security Policy that controls the
+  usage of capabilities
+home: https://github.com/kubewarden/capabilities-psp-policy
+keywords:
+- psp
+- container
+- capability
+- capabilities
+name: capabilities-psp
+sources:
+- ghcr.io/kubewarden/policies/capabilities-psp:v0.1.16
+version: 0.1.16
