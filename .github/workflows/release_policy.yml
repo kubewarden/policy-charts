@@ -20,6 +20,10 @@ on:
         required: true
         default: "artifacthub-pkg.yml"
         type: string
+      chart_dir:
+        description: "Override the chart directory name (defaults to repo name if not provided)"
+        required: false
+        type: string
   repository_dispatch:
     types: [release-policy]
 
@@ -42,6 +46,12 @@ jobs:
             echo "repo=${{ github.event.inputs.repo }}" >> $GITHUB_OUTPUT
             echo "tag=${{ github.event.inputs.tag }}" >> $GITHUB_OUTPUT
             echo "artifacthub_pkg_path=${{ github.event.inputs.artifacthub_pkg_path }}" >> $GITHUB_OUTPUT
+            
+            if [[ -n "${{ github.event.inputs.chart_dir }}" ]]; then
+              echo "chart_dir=${{ github.event.inputs.chart_dir }}" >> $GITHUB_OUTPUT
+            else
+              echo "chart_dir=${{ github.event.inputs.repo }}" >> $GITHUB_OUTPUT
+            fi
           else
             echo "owner=${{ github.event.client_payload.owner }}" >> $GITHUB_OUTPUT
             echo "repo=${{ github.event.client_payload.repo }}" >> $GITHUB_OUTPUT
@@ -51,6 +61,12 @@ jobs:
               echo "artifacthub_pkg_path=${{ github.event.client_payload.artifacthub_pkg_path }}" >> $GITHUB_OUTPUT
             else
               echo "artifacthub_pkg_path=artifacthub-pkg.yml" >> $GITHUB_OUTPUT
+            fi
+            
+            if [[ -n "${{ github.event.client_payload.chart_dir }}" ]]; then
+              echo "chart_dir=${{ github.event.client_payload.chart_dir }}" >> $GITHUB_OUTPUT
+            else
+              echo "chart_dir=${{ github.event.client_payload.repo }}" >> $GITHUB_OUTPUT
             fi
           fi
 
@@ -68,7 +84,7 @@ jobs:
 
       - name: Create directory structure
         run: |
-          TARGET_DIR="charts/${{ steps.repo-info.outputs.repo }}"
+          TARGET_DIR="charts/${{ steps.repo-info.outputs.chart_dir }}"
           mkdir -p "$TARGET_DIR"
 
           if [ ! -f "policy-source/README.md" ]; then
@@ -92,7 +108,7 @@ jobs:
 
       - name: Generate Chart.yaml
         run: |
-          TARGET_DIR="charts/${{ steps.repo-info.outputs.repo }}"
+          TARGET_DIR="charts/${{ steps.repo-info.outputs.chart_dir }}"
           ARTIFACTHUB_PKG_PATH="${{ steps.repo-info.outputs.artifacthub_pkg_path }}"
 
           cd pkg2chart
