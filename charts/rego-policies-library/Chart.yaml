@@ -1,0 +1,53 @@
+annotations:
+  artifacthub.io/repository: kubewarden-rego-policies-library
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Affinity Node Selector
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/affinity-node-selector
+  kubewarden/resources: CronJob, DaemonSet, Deployment, Job, Pod, StatefulSet
+  kubewarden/rules: |
+    - apiGroups:
+      - batch
+      apiVersions:
+      - v1
+      resources:
+      - cronjobs
+      - jobs
+      operations:
+      - CREATE
+      - UPDATE
+    - apiGroups:
+      - apps
+      apiVersions:
+      - v1
+      resources:
+      - daemonsets
+      - deployments
+      - statefulsets
+      operations:
+      - CREATE
+      - UPDATE
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - pods
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v1.0.0
+appVersion: 1.0.0
+description: "This Policy allows setting a key and value for `nodeSelector` when assigning
+  pods to nodes. \n\n`nodeSelector` is a field of PodSpec. It specifies a map of key-value
+  pairs. For the pod to be eligible to scheduled on a node, the node must have each
+  of the indicated key-value pairs as labels (it can have additional labels as well).
+  \n"
+home: https://github.com/kubewarden/rego-policies-library
+name: affinity-node-selector
+sources:
+- ghcr.io/kubewarden/policies/affinity-node-selector:v1.0.0
+version: 1.0.0
