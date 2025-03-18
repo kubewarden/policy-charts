@@ -1,0 +1,30 @@
+annotations:
+  artifacthub.io/repository: seccomp-psp
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Seccomp PSP
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/seccomp-psp
+  kubewarden/resources: Pod
+  kubewarden/rules: |
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - pods
+      operations:
+      - CREATE
+  kubewarden/tag: v0.1.4
+appVersion: 0.1.4
+description: Pod Security Policy that controls usage of Seccomp profile
+home: https://github.com/kubewarden/seccomp-psp-policy
+keywords:
+- psp
+- seccomp
+name: seccomp-psp
+sources:
+- ghcr.io/kubewarden/policies/seccomp-psp:v0.1.4
+version: 0.1.4
