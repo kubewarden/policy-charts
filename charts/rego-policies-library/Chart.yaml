@@ -1,0 +1,53 @@
+annotations:
+  artifacthub.io/repository: kubewarden-rego-policies-library
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Resource Suspend Waiver
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/resource-suspend-waiver
+  kubewarden/resources: HelmRelease, GitRepository, OCIRepository, Bucket, HelmChart,
+    HelmRepository, Kustomization
+  kubewarden/rules: |
+    - apiGroups:
+      - helm.toolkit.fluxcd.io
+      apiVersions:
+      - v2
+      resources:
+      - helmreleases
+      operations:
+      - CREATE
+      - UPDATE
+    - apiGroups:
+      - source.toolkit.fluxcd.io
+      apiVersions:
+      - v1
+      resources:
+      - gitrepositories
+      - ocirepositories
+      - buckets
+      - helmcharts
+      - helmrepositories
+      operations:
+      - CREATE
+      - UPDATE
+    - apiGroups:
+      - kustomize.toolkit.fluxcd.io
+      apiVersions:
+      - v1
+      resources:
+      - kustomizations
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v1.0.0
+appVersion: 1.0.0
+description: Resource cannot be suspended unless it's on the waiver list.
+home: https://github.com/kubewarden/rego-policies-library
+keywords:
+- flux
+name: resource-suspend-waiver
+sources:
+- ghcr.io/kubewarden/policies/resource-suspend-waiver:v1.0.0
+version: 1.0.0
