@@ -1,0 +1,19 @@
+questions:
+- default: []
+  description: >-
+    This policy provides a list of allowed Flex Volume drivers. If the pod to be
+    evaluated has a different driver on any `flexVolume` volume, it will be
+    rejected.
+  tooltip: >-
+    Provide a flex volume driver as the `Value`. (e.g. `driver: example/lvm`)
+  group: Settings
+  label: Allowed flex volumes
+  hide_input: true
+  type: sequence[
+  variable: allowedFlexVolumes
+  sequence_questions:
+    - default: ''
+      group: Settings
+      label: Driver
+      type: string
+      variable: driver

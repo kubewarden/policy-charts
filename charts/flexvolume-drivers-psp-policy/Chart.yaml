@@ -1,0 +1,34 @@
+annotations:
+  artifacthub.io/repository: flexvolume-drivers-psp
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Flexvolume Drivers Psp
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/flexvolume-drivers-psp
+  kubewarden/resources: Pod
+  kubewarden/rules: |
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - pods
+      operations:
+      - CREATE
+  kubewarden/tag: v0.1.7
+appVersion: 0.1.7
+description: Replacement for the Kubernetes Pod Security Policy that controls the
+  allowed `flexVolume` drivers
+home: https://github.com/kubewarden/flexvolume-drivers-psp-policy
+keywords:
+- psp
+- container
+- runtime
+- flex volume
+- flex
+name: flexvolume-drivers-psp
+sources:
+- ghcr.io/kubewarden/policies/flexvolume-drivers-psp:v0.1.7
+version: 0.1.7
