@@ -1,0 +1,63 @@
+annotations:
+  artifacthub.io/repository: pod-privileged-policy
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Pod Privileged Policy
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/pod-privileged
+  kubewarden/resources: Pod
+  kubewarden/rules: |
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - pods
+      operations:
+      - CREATE
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - replicationcontrollers
+      operations:
+      - CREATE
+      - UPDATE
+    - apiGroups:
+      - apps
+      apiVersions:
+      - v1
+      resources:
+      - deployments
+      - replicasets
+      - statefulsets
+      - daemonsets
+      operations:
+      - CREATE
+      - UPDATE
+    - apiGroups:
+      - batch
+      apiVersions:
+      - v1
+      resources:
+      - jobs
+      - cronjobs
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v0.3.3
+appVersion: 0.3.3
+description: Limit the ability to create privileged containers
+home: https://github.com/kubewarden/pod-privileged-policy
+keywords:
+- psp
+- pod
+- container
+- privileged
+name: pod-privileged-policy
+sources:
+- ghcr.io/kubewarden/policies/pod-privileged:v0.3.3
+version: 0.3.3
