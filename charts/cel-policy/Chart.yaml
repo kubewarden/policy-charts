@@ -1,0 +1,37 @@
+annotations:
+  artifacthub.io/repository: cel-policy
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/contextAwareResources: |
+    - apiVersion: v1
+      kind: Namespace
+  kubewarden/displayName: CEL Policy
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/cel-policy
+  kubewarden/resources: Any
+  kubewarden/rules: |
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - '*'
+      operations:
+      - CREATE
+      - UPDATE
+      - DELETE
+  kubewarden/tag: v1.2.2
+appVersion: 1.2.2
+description: A policy that evaluates CEL expressions
+home: https://github.com/kubewarden/cel-policy
+keywords:
+- compliance
+- CEL
+- ValidatingAdmissionPolicy
+- Common Expression Language
+name: cel-policy
+sources:
+- ghcr.io/kubewarden/policies/cel-policy:v1.2.2
+version: 1.2.2
