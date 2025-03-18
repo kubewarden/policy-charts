@@ -1,0 +1,11 @@
+questions:
+  - default: 1
+    tooltip: Value for the Pod's spec.dnsConfig.options.ndots
+    description: >-
+      This policy enforces the DNS lookup configuration of a Pod to have the specified ndots value.
+      When no configuration is provided, the default value is 1.
+    group: Settings
+    label: ndots
+    required: false
+    type: int
+    variable: ndots

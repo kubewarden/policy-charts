@@ -1,0 +1,31 @@
+annotations:
+  artifacthub.io/repository: pod-ndots-policy
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Pod ndots
+  kubewarden/mutation: "true"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/pod-ndots
+  kubewarden/resources: Pod
+  kubewarden/rules: |
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - pods
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v0.1.1
+appVersion: 0.1.1
+description: Enforce a minimum value for the ndots option in the resolv.conf file
+  of a Pod.
+home: https://github.com/kubewarden/pod-ndots
+keywords:
+- pod
+name: pod-ndots
+sources:
+- ghcr.io/kubewarden/policies/pod-ndots:v0.1.1
+version: 0.1.1
