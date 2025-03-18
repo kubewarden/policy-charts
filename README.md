@@ -17,15 +17,16 @@ The workflow can be triggered in two ways:
    - `tag`: Tag to release
 
 2. **Automatically via repository dispatch** - requires this payload:
-   ```json
+   ```jsonc
    {
      "event_type": "release-policy",
      "client_payload": {
        "owner": "org-name",
        "repo": "repo-name",
        "tag": "v1.0.0",
-       "artifacthub-pkg": "path/to/artifacthub-pkg.yml" # Optional, defaults to `./artifacthub-pkg.yml`
-     }
+       "artifacthub-pkg": "path/to/artifacthub-pkg.yml", // Optional, defaults to `./artifacthub-pkg.yml`
+       "chart_dir": "MyPolicy", // Optional, defaults to repo name
+     },
    }
    ```
 
