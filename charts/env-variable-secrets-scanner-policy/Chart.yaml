@@ -1,0 +1,65 @@
+annotations:
+  artifacthub.io/repository: env-variable-secrets-scanner
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Environment Variable Secrets Scanner
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/env-variable-secrets-scanner
+  kubewarden/resources: Pod,Deployment,Replicaset,Statefulset,Daemonset,Replicationcontroller,Job,Cronjob
+  kubewarden/rules: |
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - pods
+      operations:
+      - CREATE
+    - apiGroups:
+      - ''
+      apiVersions:
+      - v1
+      resources:
+      - replicationcontrollers
+      operations:
+      - CREATE
+      - UPDATE
+    - apiGroups:
+      - apps
+      apiVersions:
+      - v1
+      resources:
+      - deployments
+      - replicasets
+      - statefulsets
+      - daemonsets
+      operations:
+      - CREATE
+      - UPDATE
+    - apiGroups:
+      - batch
+      apiVersions:
+      - v1
+      resources:
+      - jobs
+      - cronjobs
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v0.1.8
+appVersion: 0.1.8
+description: Policy that inspects env vars and rejects a request if a secret was found
+home: https://github.com/kubewarden/env-variable-secrets-scanner-policy
+keywords:
+- secrets
+- api keys
+- tokens
+- secret leak
+- confidential data
+- confidential data leak
+name: env-variable-secrets-scanner
+sources:
+- ghcr.io/kubewarden/policies/env-variable-secrets-scanner:v0.1.8
+version: 0.1.8
