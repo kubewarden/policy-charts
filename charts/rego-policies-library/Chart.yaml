@@ -1,0 +1,30 @@
+annotations:
+  artifacthub.io/repository: kubewarden-rego-policies-library
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Bucket Insecure Connections
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/bucket-insecure-connections
+  kubewarden/resources: Bucket
+  kubewarden/rules: |
+    - apiGroups:
+      - source.toolkit.fluxcd.io
+      apiVersions:
+      - v1
+      resources:
+      - buckets
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v1.0.0
+appVersion: 1.0.0
+description: Ensure that Bucket objects do not use insecure connections
+home: https://github.com/kubewarden/rego-policies-library
+keywords:
+- flux
+name: bucket-insecure-connections
+sources:
+- ghcr.io/kubewarden/policies/bucket-insecure-connections:v1.0.0
+version: 1.0.0
