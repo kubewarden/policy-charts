@@ -1,0 +1,31 @@
+annotations:
+  artifacthub.io/repository: kubewarden-rego-policies-library
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Kustomization Var Substitution
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/kustomization-var-substitution
+  kubewarden/resources: Kustomization
+  kubewarden/rules: |
+    - apiGroups:
+      - kustomize.toolkit.fluxcd.io
+      apiVersions:
+      - v1
+      resources:
+      - kustomizations
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v1.0.0
+appVersion: 1.0.0
+description: The property 'spec.postBuild.substitute.var_substitution_enabled' must
+  be disabled.
+home: https://github.com/kubewarden/rego-policies-library
+keywords:
+- flux
+name: kustomization-var-substitution
+sources:
+- ghcr.io/kubewarden/policies/kustomization-var-substitution:v1.0.0
+version: 1.0.0
