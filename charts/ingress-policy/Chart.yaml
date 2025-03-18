@@ -1,0 +1,30 @@
+annotations:
+  artifacthub.io/repository: ingress-policy
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Ingress Policy
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/ingress
+  kubewarden/resources: Ingress
+  kubewarden/rules: |
+    - apiGroups:
+      - networking.k8s.io
+      apiVersions:
+      - v1
+      resources:
+      - ingresses
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v0.1.16
+appVersion: 0.1.16
+description: Enforce requirements on Ingress resources
+home: https://github.com/kubewarden/ingress-policy
+keywords:
+- ingress
+name: ingress-policy
+sources:
+- ghcr.io/kubewarden/policies/ingress:v0.1.16
+version: 0.1.16
