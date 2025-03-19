@@ -1,0 +1,30 @@
+annotations:
+  artifacthub.io/repository: kubewarden-rego-policies-library
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: HelmChart Values File Format
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/helm-chart-values-files-format
+  kubewarden/resources: HelmChart
+  kubewarden/rules: |
+    - apiGroups:
+      - source.toolkit.fluxcd.io
+      apiVersions:
+      - v1
+      resources:
+      - helmcharts
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v1.0.0
+appVersion: 1.0.0
+description: 'HelmChart must reference values files in the following format: ''xxx=values.yaml''.'
+home: https://github.com/kubewarden/rego-policies-library
+keywords:
+- flux
+name: helm-chart-values-files-format
+sources:
+- ghcr.io/kubewarden/policies/helm-chart-values-files-format:v1.0.0
+version: 1.0.0
