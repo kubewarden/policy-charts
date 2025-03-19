@@ -43,6 +43,15 @@ annotations:
       operations:
       - CREATE
     - apiGroups:
+      - audit.k8s.io
+      apiVersions:
+      - v1alpha1
+      - v1beta1
+      resources:
+      - '*'
+      operations:
+      - CREATE
+    - apiGroups:
       - authentication.k8s.io
       apiVersions:
       - v1beta1
@@ -112,6 +121,7 @@ annotations:
       apiVersions:
       - v1beta1
       - v1beta2
+      - v1beta3
       resources:
       - '*'
       operations:
@@ -166,8 +176,8 @@ annotations:
       - '*'
       operations:
       - CREATE
-  kubewarden/tag: v0.1.15-k8sv1.32.0
-appVersion: 0.1.15-k8sv1.32.0
+  kubewarden/tag: v0.2.0
+appVersion: 0.2.0
 description: Find deprecated and removed Kubernetes resources
 home: https://github.com/kubewarden/deprecated-api-versions-policy
 keywords:
@@ -175,5 +185,5 @@ keywords:
 - deprecated API
 name: deprecated-api-versions
 sources:
-- ghcr.io/kubewarden/policies/deprecated-api-versions:v0.1.15-k8sv1.32.0
-version: 0.1.15-k8sv1.32.0
+- ghcr.io/kubewarden/policies/deprecated-api-versions:v0.2.0
+version: 0.2.0
