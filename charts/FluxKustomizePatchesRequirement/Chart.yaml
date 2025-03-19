@@ -1,0 +1,30 @@
+annotations:
+  artifacthub.io/repository: kubewarden-rego-policies-library
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Kustomization Patches
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/kustomization-patches-requirement
+  kubewarden/resources: Kustomization
+  kubewarden/rules: |
+    - apiGroups:
+      - kustomize.toolkit.fluxcd.io
+      apiVersions:
+      - v1
+      resources:
+      - kustomizations
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v1.0.0
+appVersion: 1.0.0
+description: Kustomization patches should be enabled or disabled based on input.
+home: https://github.com/kubewarden/rego-policies-library
+keywords:
+- flux
+name: kustomization-patches-requirement
+sources:
+- ghcr.io/kubewarden/policies/kustomization-patches-requirement:v1.0.0
+version: 1.0.0
