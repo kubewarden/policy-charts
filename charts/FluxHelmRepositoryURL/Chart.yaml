@@ -1,0 +1,31 @@
+annotations:
+  artifacthub.io/repository: kubewarden-rego-policies-library
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Helm Repo URL Should Be in Organisation Domain
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/helm-repo-url
+  kubewarden/resources: HelmRepository
+  kubewarden/rules: |
+    - apiGroups:
+      - source.toolkit.fluxcd.io
+      apiVersions:
+      - v1
+      resources:
+      - helmrepositories
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v1.0.0
+appVersion: 1.0.0
+description: The URL of a Helm repository should only be from the specified organisation
+  domain.
+home: https://github.com/kubewarden/rego-policies-library
+keywords:
+- flux
+name: helm-repo-url
+sources:
+- ghcr.io/kubewarden/policies/helm-repo-url:v1.0.0
+version: 1.0.0
