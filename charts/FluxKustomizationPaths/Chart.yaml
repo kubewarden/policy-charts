@@ -1,0 +1,30 @@
+annotations:
+  artifacthub.io/repository: kubewarden-rego-policies-library
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/type: kubewarden-policy
+  catalog.cattle.io/ui-component: kubewarden
+  kubewarden/displayName: Kustomization Excluded Paths
+  kubewarden/mutation: "false"
+  kubewarden/registry: ghcr.io
+  kubewarden/repository: kubewarden/policies/kustomization-excluded-paths
+  kubewarden/resources: Kustomization
+  kubewarden/rules: |
+    - apiGroups:
+      - kustomize.toolkit.fluxcd.io
+      apiVersions:
+      - v1
+      resources:
+      - kustomizations
+      operations:
+      - CREATE
+      - UPDATE
+  kubewarden/tag: v1.0.0
+appVersion: 1.0.0
+description: spec.path cannot be one of excludedPathsList[]
+home: https://github.com/kubewarden/rego-policies-library
+keywords:
+- flux
+name: kustomization-excluded-paths
+sources:
+- ghcr.io/kubewarden/policies/kustomization-excluded-paths:v1.0.0
+version: 1.0.0
