@@ -77,6 +77,13 @@ jobs:
           ref: ${{ steps.repo-info.outputs.tag }}
           path: policy-source
 
+      - name: Clone source repository at artifacthub branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: ${{ steps.repo-info.outputs.owner }}/${{ steps.repo-info.outputs.repo }}
+          ref: artifacthub
+          path: policy-source-artifacthub
+
       - name: Setup Go
         uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # v5.3.0
         with:
@@ -114,7 +121,7 @@ jobs:
           cd pkg2chart
 
           go run main.go \
-            --pkg "../policy-source/$ARTIFACTHUB_PKG_PATH" \
+            --pkg "../policy-source-artifacthub/$ARTIFACTHUB_PKG_PATH" \
             --repo "../policy-source/artifacthub-repo.yml" \
             --output "../$TARGET_DIR/Chart.yaml"
 
